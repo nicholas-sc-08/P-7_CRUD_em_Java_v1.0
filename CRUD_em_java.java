@@ -55,27 +55,30 @@ public class CRUD_em_java {
 
         usuarios.add(nome);
 
+        JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
     };
 
     private static void atualizar(ArrayList<String>usuarios){
 
         boolean usuario_atualizado = false;
 
-        for(int i = 0; !usuario_atualizado ; i++){
-
         String usuario_a_atualizar = JOptionPane.showInputDialog("Digite o nome de usuário que queira atualizar.");
+
+        for(int i = 0; i < usuarios.size() ; i++){
 
             if(usuario_a_atualizar.equals(usuarios.get(i))){
 
                 String novo_usuario = JOptionPane.showInputDialog("Digite um novo nome:");
 
                 usuarios.set(i, novo_usuario);
-                usuario_atualizado = true;
                 JOptionPane.showMessageDialog(null, "Usuário atualizado com sucesso!");
-            } else {
-
-                JOptionPane.showMessageDialog(null, "Usuário não existente");
+                usuario_atualizado = true;
             };
+        };
+
+        if(!usuario_atualizado){
+
+            JOptionPane.showMessageDialog(null, "Usuário não existente");
         };
     };
 
@@ -83,9 +86,10 @@ public class CRUD_em_java {
 
         boolean usuario_deletado = false;
 
-        for(int i = 0; !usuario_deletado; i++){
+        String usuario_a_deletar = JOptionPane.showInputDialog("Digite o nome de usuário que queira deletar:");
 
-            String usuario_a_deletar = JOptionPane.showInputDialog("Digite o nome de usuário que queira deletar:");
+        for(int i = 0; i < usuarios.size(); i++){
+
 
             if(usuario_a_deletar.equals(usuarios.get(i))){
 
@@ -96,10 +100,23 @@ public class CRUD_em_java {
             };
         };
 
+        if(!usuario_deletado){
+
+          JOptionPane.showMessageDialog(null, "Usuário não existente!");
+        };
      };
 
     private static void visualizar(ArrayList<String>usuarios){
-        JOptionPane.showMessageDialog(null, "Usuários cadastrados: "+ usuarios.toString());
+
+        if(usuarios.isEmpty()){
+
+            JOptionPane.showMessageDialog(null, "Nenhum usuário cadastrado!");
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Usuários cadastrados: "+ usuarios.toString());
+
+        };
     };
 
 }
