@@ -1,59 +1,61 @@
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CRUD_em_java {
 
+
     public static void main(String[] args){
 
+        ArrayList<String> usuarios = new ArrayList<>();
         JOptionPane.showMessageDialog(null, "Seja bem-vindo ao CRUD!");
 
+        boolean fim_do_loop = false;
 
-       boolean fim_do_loop = false;
+        while(!fim_do_loop) {
 
-       while(!fim_do_loop) {
+            int resposta = Integer.parseInt(JOptionPane.showInputDialog("Escolha uma das opções a seguir:\n1º Cadastrar\n2º Atualizar\n3º Deletar\n4º Visualizar\n5º Sair"));
 
-           int resposta = Integer.parseInt(JOptionPane.showInputDialog("Escolha uma das opções a seguir:\n1º Cadastrar\n2º Atualizar\n3º Deletar\n4º Visualizar\n5º Sair"));
+            switch (resposta) {
 
-           switch (resposta) {
+                case 1:
 
-               case 1:
+                    cadastrar(usuarios);
+                    break;
 
-                   cadastrar();
-                   fim_do_loop = true;
-                   break;
+                case 2:
 
-               case 2:
+                    atualizar();
+                    break;
 
-                   atualizar();
-                   fim_do_loop = true;
-                   break;
+                case 3:
 
-               case 3:
+                    deletar();
+                    break;
 
-                   deletar();
-                   fim_do_loop = true;
-                   break;
+                case 4:
 
-               case 4:
+                    visualizar(usuarios);
+                    break;
 
-                   visualizar();
-                   fim_do_loop = true;
-                   break;
+                case 5:
 
-               case 5:
+                    fim_do_loop = true;
+                    break;
 
-                   fim_do_loop = true;
-                   break;
+                default:
 
-               default:
-
-                   JOptionPane.showMessageDialog(null, "Favor selecionar uma das 4 opções");
-           };
-       };
+                    JOptionPane.showMessageDialog(null, "Favor selecionar uma das 4 opções");
+            };
+        };
     };
 
-    private static void cadastrar(){
+    private static void cadastrar(ArrayList<String> usuarios){
 
-        System.out.println("entrando na função");
+        String nome = JOptionPane.showInputDialog("Insira seu nome:");
+
+        usuarios.add(nome);
+
     };
 
     private static void atualizar(){
@@ -61,11 +63,12 @@ public class CRUD_em_java {
     };
 
     private static void deletar(){
-
+        
+        
     };
 
-    private static void visualizar(){
-
+    private static void visualizar(ArrayList<String>usuarios){
+        JOptionPane.showMessageDialog(null, "Usuários cadastrados: "+ usuarios.toString());
     };
 
 }
